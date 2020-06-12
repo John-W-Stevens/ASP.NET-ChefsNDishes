@@ -1,0 +1,45 @@
+@{
+    ViewData["Title"] = "Read/Update/Delete a Chef";
+}
+
+@model Chef
+
+<div class="row">
+    <div class="col-12 text-center">
+        <h1>Read/Update/Delete a Chef</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 col-md-10 offset-md-1">
+        <form asp-action="UpdateChef" asp-route-chefId=@Model.ChefId asp-controller="Home" method="post">
+            <div class="form-group">
+                <label asp-for="FirstName"></label>&nbsp<span asp-validation-for="FirstName" class="error-message"></span>
+                <input asp-for="FirstName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName"></label>&nbsp<span asp-validation-for="LastName" class="error-message"></span>
+                <input asp-for="LastName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfBirth"></label>&nbsp<span asp-validation-for="DateOfBirth" class="error-message"></span>
+                <input asp-for="DateOfBirth" class="form-control" />
+            </div>
+            <div class="form-group text-right">
+                <button class="btn btn-primary">Edit Chef</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 col-md-10 offset-md-1">
+        <form asp-action="DeleteChef" asp-route-chefId=@Model.ChefId asp-controller="Home" method="post">
+            <input type="hidden" name="Delete" />
+            <div class="form-group text-center">
+                <button class="btn btn-danger">Delete this Chef</button>
+            </div>
+        </form>
+    </div>
+</div>
+

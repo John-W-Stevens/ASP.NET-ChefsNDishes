@@ -1,0 +1,45 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model Chef[]
+
+<div class="row">
+    <div class="col-12 col-md-10 offset-md-1 text-right">
+        <a asp-action="CreateChefForm" class="btn btn-primary">Create a Chef</a>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-12 col-md-10 offset-md-1">
+        <h1>Check out our roster of Chefs</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 col-md-10 offset-md-1">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Date Of Birth</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Chef chef in Model)
+                {
+                    string url = $"/chef/{chef.ChefId}";
+                    string DOB = chef.DateOfBirth.ToString("MMM dd, yyyy");
+                    <tr>
+                        <td><a href=@url>@chef.FirstName</a></td>
+                        <td>@chef.LastName</td>
+                        <td>@DOB</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

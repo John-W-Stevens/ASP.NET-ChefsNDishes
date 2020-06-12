@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "All Dishes";
+}
+
+@model Dish[]
+
+<div class="row">
+    <div class="col-12 col-md-10 offset-md-1 text-right">
+        <a asp-action="CreateDishForm" class="btn btn-primary">Create a Dish</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 col-md-10 offset-md-1">
+        <h1>Yum, take a look at our tasty dishes!</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 col-md-10 offset-md-1">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Chef</th>
+                    <th>Tastiness</th>
+                    <th>Calories</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Dish dish in Model)
+                {
+                    string url = $"/dish/{dish.DishId}";
+                    <tr>
+                        <td><a href=@url>@dish.Name</a></td>
+                        <td>@dish.Creator.FirstName @dish.Creator.LastName</td>
+                        <td>@dish.Tastiness</td>
+                        <td>@dish.Calories</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
